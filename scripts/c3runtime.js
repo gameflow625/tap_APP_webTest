@@ -1898,6 +1898,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Multiplayer.Cnds.IsHost,
 		C3.Plugins.System.Acts.SetGroupActive,
 		C3.Plugins.Button.Acts.Destroy,
+		C3.Plugins.Text.Acts.SetVisible,
 		C3.Plugins.Sprite.Acts.SetVisible,
 		C3.Plugins.System.Acts.WaitForPreviousActions
 	];
