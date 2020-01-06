@@ -1840,9 +1840,14 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Acts.SetSize,
 		C3.Plugins.Sprite.Acts.SetInstanceVar,
 		C3.Plugins.Touch.Cnds.OnTouchObject,
-		C3.Plugins.Sprite.Acts.Destroy,
 		C3.Plugins.Function.Acts.CallFunction,
+		C3.Plugins.Multiplayer.Cnds.IsHost,
+		C3.Plugins.Multiplayer.Acts.SendPeerMessage,
+		C3.Plugins.Multiplayer.Exps.PeerID,
+		C3.Plugins.Multiplayer.Exps.HostID,
 		C3.Plugins.System.Cnds.PickAll,
+		C3.Plugins.Sprite.Acts.Destroy,
+		C3.Plugins.Multiplayer.Cnds.OnPeerMessage,
 		C3.Plugins.Sprite.Cnds.OnDestroyed,
 		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.Function.Cnds.OnFunction,
@@ -1888,12 +1893,8 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.WaitForSignal,
 		C3.Behaviors.lunarray_LiteTween.Cnds.OnEnd,
 		C3.Plugins.System.Cnds.IsGroupActive,
-		C3.Plugins.Multiplayer.Cnds.OnPeerMessage,
 		C3.Plugins.Multiplayer.Exps.Message,
 		C3.Plugins.System.Cnds.LayerVisible,
-		C3.Plugins.Multiplayer.Acts.SendPeerMessage,
-		C3.Plugins.Multiplayer.Exps.PeerID,
-		C3.Plugins.Multiplayer.Exps.HostID,
 		C3.Plugins.Multiplayer.Acts.SignallingConnect,
 		C3.Plugins.Multiplayer.Cnds.OnSignallingConnected,
 		C3.Plugins.Multiplayer.Acts.SignallingLogin,
@@ -1904,7 +1905,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Multiplayer.Cnds.OnAnyPeerMessage,
 		C3.Plugins.System.Acts.GoToLayout,
 		C3.Plugins.Multiplayer.Cnds.OnSignallingJoinedRoom,
-		C3.Plugins.Multiplayer.Cnds.IsHost,
 		C3.Plugins.System.Acts.SetGroupActive,
 		C3.Plugins.Button.Acts.Destroy,
 		C3.Plugins.Sprite.Acts.SetVisible,
@@ -2132,8 +2132,14 @@ self.C3_JsPropNameTable = [
 			const n0 = p._GetNode(0);
 			return () => n0.ExpInstVar();
 		},
-		() => 0.1,
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0();
+		},
+		() => "h_c",
 		() => "",
+		() => "p_c",
+		() => 0.1,
 		() => "a",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -2431,10 +2437,6 @@ self.C3_JsPropNameTable = [
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => f0(f1(), "**");
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0();
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
