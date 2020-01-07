@@ -1894,6 +1894,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.lunarray_LiteTween.Cnds.OnEnd,
 		C3.Plugins.System.Cnds.IsGroupActive,
 		C3.Plugins.Multiplayer.Exps.Message,
+		C3.Plugins.Sprite.Cnds.CompareFrame,
 		C3.Plugins.System.Cnds.LayerVisible,
 		C3.Plugins.Multiplayer.Acts.SignallingConnect,
 		C3.Plugins.Multiplayer.Cnds.OnSignallingConnected,
@@ -2152,8 +2153,8 @@ self.C3_JsPropNameTable = [
 			const f2 = p._GetNode(2).GetBoundMethod();
 			return () => f0(f1(0), f2("a"), ",");
 		},
-		() => 15,
-		() => 80,
+		() => 25,
+		() => 30,
 		() => 3,
 		() => 50,
 		() => 1,
@@ -2504,6 +2505,10 @@ self.C3_JsPropNameTable = [
 		},
 		() => "0",
 		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpInstVar() / 5);
+		},
+		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => f0(f1(1), ",");
@@ -2518,7 +2523,7 @@ self.C3_JsPropNameTable = [
 		p => {
 			const n0 = p._GetNode(0);
 			const v1 = p._GetNode(1).GetVar();
-			return () => ((2 * (n0.ExpInstVar() / 3)) * v1.GetValue());
+			return () => (((2 * (n0.ExpInstVar() / 3)) * v1.GetValue()) / 5);
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
