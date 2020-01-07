@@ -1840,14 +1840,16 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Acts.SetSize,
 		C3.Plugins.Sprite.Acts.SetInstanceVar,
 		C3.Plugins.Touch.Cnds.OnTouchObject,
-		C3.Plugins.Function.Acts.CallFunction,
-		C3.Plugins.System.Cnds.PickAll,
-		C3.Plugins.Sprite.Acts.Destroy,
 		C3.Plugins.Multiplayer.Cnds.IsHost,
+		C3.Plugins.Sprite.Cnds.CompareInstanceVar,
 		C3.Plugins.Multiplayer.Acts.SendPeerMessage,
 		C3.Plugins.Multiplayer.Exps.PeerID,
+		C3.Plugins.Sprite.Acts.Destroy,
+		C3.Plugins.Function.Acts.CallFunction,
+		C3.Plugins.System.Cnds.PickAll,
 		C3.Plugins.Multiplayer.Exps.HostID,
 		C3.Plugins.Multiplayer.Cnds.OnPeerMessage,
+		C3.Plugins.Multiplayer.Exps.Message,
 		C3.Plugins.Sprite.Cnds.OnDestroyed,
 		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.Function.Cnds.OnFunction,
@@ -1861,6 +1863,9 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.AddVar,
 		C3.Plugins.System.Exps.originalwindowwidth,
 		C3.Plugins.System.Exps.int,
+		C3.Plugins.Function.Cnds.CompareParam,
+		C3.Plugins.Sprite.Acts.SetDefaultColor,
+		C3.Plugins.System.Cnds.Else,
 		C3.Plugins.System.Cnds.RegexTest,
 		C3.Plugins.Sprite.Acts.SetMirrored,
 		C3.Plugins.Sprite.Acts.SetFlipped,
@@ -1874,8 +1879,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Exps.windowwidth,
 		C3.Behaviors.lunarray_LiteTween.Acts.SetParameter,
 		C3.Behaviors.lunarray_LiteTween.Acts.Start,
-		C3.Plugins.System.Cnds.Else,
-		C3.Plugins.Browser.Acts.ConsoleLog,
 		C3.Plugins.Function.Exps.ReturnValue,
 		C3.Plugins.System.Cnds.ForEach,
 		C3.Behaviors.lunarray_LiteTween.Exps.Progress,
@@ -1893,7 +1896,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.WaitForSignal,
 		C3.Behaviors.lunarray_LiteTween.Cnds.OnEnd,
 		C3.Plugins.System.Cnds.IsGroupActive,
-		C3.Plugins.Multiplayer.Exps.Message,
 		C3.Plugins.Sprite.Cnds.CompareFrame,
 		C3.Plugins.System.Cnds.LayerVisible,
 		C3.Plugins.Multiplayer.Acts.SignallingConnect,
@@ -1936,6 +1938,7 @@ self.C3_JsPropNameTable = [
 	{Function: 0},
 	{maschera_selettore: 0},
 	{code: 0},
+	{t: 0},
 	{Pin: 0},
 	{selettore: 0},
 	{timerParent: 0},
@@ -2128,19 +2131,20 @@ self.C3_JsPropNameTable = [
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => and(and((f0("gridy") + 1), "_"), (f1("gridx") + 1));
 		},
-		() => "Shape_completed",
-		p => {
-			const n0 = p._GetNode(0);
-			return () => n0.ExpInstVar();
-		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0();
 		},
 		() => "h_c",
-		() => "",
+		p => {
+			const n0 = p._GetNode(0);
+			return () => n0.ExpInstVar();
+		},
+		() => "Shape_completed",
+		() => 1,
 		() => "p_c",
 		() => 0.1,
+		() => "",
 		() => "a",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -2153,11 +2157,10 @@ self.C3_JsPropNameTable = [
 			const f2 = p._GetNode(2).GetBoundMethod();
 			return () => f0(f1(0), f2("a"), ",");
 		},
-		() => 25,
 		() => 30,
+		() => 15,
 		() => 3,
-		() => 50,
-		() => 1,
+		() => 25,
 		() => "builder",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -2212,6 +2215,10 @@ self.C3_JsPropNameTable = [
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0(5);
 		},
+		() => 6,
+		() => "g",
+		() => -103940442555391,
+		() => -562954063892479,
 		() => "L",
 		() => "gi",
 		() => "V",
@@ -2370,6 +2377,10 @@ self.C3_JsPropNameTable = [
 			const f3 = p._GetNode(3).GetBoundMethod();
 			return () => f0(f1(f2(0), f3("a"), "**"), 1, ":");
 		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0(4);
+		},
 		() => "linea",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -2402,7 +2413,6 @@ self.C3_JsPropNameTable = [
 			const n0 = p._GetNode(0);
 			return () => ("," + n0.ExpInstVar());
 		},
-		() => "123156465468",
 		() => "lineaO",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -2427,7 +2437,6 @@ self.C3_JsPropNameTable = [
 			return () => f0("lineaO");
 		},
 		() => 5,
-		() => "auhahjahjasdjgh",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const v1 = p._GetNode(1).GetVar();
@@ -2480,7 +2489,6 @@ self.C3_JsPropNameTable = [
 			return () => (v0.GetValue() - (v1.GetValue() / (10 / f2((n3.ExpBehavior() * 10)))));
 		},
 		() => "c",
-		() => "g",
 		() => 1.5,
 		p => {
 			const n0 = p._GetNode(0);
@@ -2524,10 +2532,6 @@ self.C3_JsPropNameTable = [
 			const n0 = p._GetNode(0);
 			const v1 = p._GetNode(1).GetVar();
 			return () => (((2 * (n0.ExpInstVar() / 3)) * v1.GetValue()) / 5);
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0(4);
 		},
 		() => 160,
 		() => "35,35",
